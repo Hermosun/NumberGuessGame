@@ -1,0 +1,18 @@
+version: '3'
+services:
+  tomcat:
+    build: .
+    ports:
+      - "8080:8080"
+
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8090:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  jenkins_home:
